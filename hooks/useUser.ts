@@ -44,11 +44,18 @@ export default function User() {
     setMessages(res.data);
   }
 
+  async function postMessage(msg:string){
+    console.log(msg);
+    await supabase.from('messages')
+    .insert([{message:msg,user_id:supabase.auth.user()?.id,is_public:true}]);
+  }
+
   return {
     session,
     messages,
     signInWithPassword,
     signOut,
     refreshMessage,
+    postMessage
   }
 }

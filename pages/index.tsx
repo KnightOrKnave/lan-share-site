@@ -3,13 +3,20 @@ import { useState } from "react";
 import User from "../hooks/useUser";
 
 const Home: NextPage = () => {
-  const { session, messages, signOut, signInWithPassword, refreshMessage } =
+  const { session, messages, signOut, signInWithPassword, refreshMessage, postMessage } =
     User();
   const [text, setText] = useState("");
+  const [newMessage,setMessage]=useState({value:''});
 
   const handleChange = (e: any) => {
     setText(() => e.target.value);
   };
+
+  const handlePost=()=>{
+    console.log(newMessage)
+    postMessage(newMessage.target.value)
+    refreshMessage();
+  }
 
   return (
     <>
@@ -19,15 +26,13 @@ const Home: NextPage = () => {
 
           <div>
             <p>投稿メッセージ</p>
-            {console.log(JSON.stringify(messages))}
             {messages.map((item: any) => {
-              {
-                console.log(item.message);
-              }
               return <div key={item.id}>*{item.message}*</div>;
             })}
           </div>
           <button onClick={() => refreshMessage()}>更新</button>
+          <textarea name="value" id="value" cols={80} rows={3} value={newMessage.value} onChange={(e)=>setMessage(e)}></textarea>
+          <button id={"submit"} onClick={() => handlePost()}>Submit</button>
         </div>
       ) : (
         <div>
