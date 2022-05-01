@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { supabase} from "../lib/supabase-client";
 
 export default function User() {
-  const [session, setSession] = useState();
+  const [session, setSession] = useState<any>();
+  const [messages,setMessages] = useState<any>([]);
 
   useEffect(() => {
     const { data: authListenner } = supabase.auth.onAuthStateChange(
@@ -25,12 +26,29 @@ export default function User() {
 
   async function signOut(){
     await supabase.auth.signOut();
+  }
+  
 
+  useEffect(()=>{
+    const setupMessages=async()=>{
+      if(session){
+        const res=await supabase.from('messages').select('*');
+        setMessages(res.data);
+      };
+    };
+    setupMessages();
+  },[session])
+
+  async function refreshMessage(){
+    const res=await supabase.from('messages').select('*');
+    setMessages(res.data);
   }
 
   return {
     session,
+    messages,
     signInWithPassword,
     signOut,
+    refreshMessage,
   }
 }
