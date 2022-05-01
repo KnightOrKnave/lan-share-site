@@ -28,3 +28,28 @@
 .loginbutton{
 }
 
+
+.contentmain{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.contentmessages{
+  display: flex;
+  flex-flow: "column";
+  flex-wrap: wrap;
+  width: 100%;
+  border-width: 1em;
+  margin-bottom: 80px;
+}
+
+.contentmessageitem{
+  margin-bottom: 10px;
+  width: 100%;
+  border-width: 5px;
+  border-color: gray;
+
+}
