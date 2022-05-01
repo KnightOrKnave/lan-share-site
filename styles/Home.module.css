@@ -28,6 +28,13 @@
 .loginbutton{
 }
 
+.contentheader{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
 
 .contentmain{
   width: 100%;
@@ -47,9 +54,12 @@
 }
 
 .contentmessageitem{
+  padding: 5px 10px;
   margin-bottom: 10px;
+  min-height: 30px;
   width: 100%;
   border-width: 5px;
-  border-color: gray;
+  border-color: black;
+  background-color: aliceblue;
 
 }

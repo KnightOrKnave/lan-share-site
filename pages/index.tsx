@@ -30,12 +30,16 @@ const Home: NextPage = () => {
       {session ? (
         <div className={styles.main}>
           <div className={styles.contentmain}>
-            <div>
-              <button onClick={() => signOut()}>サインアウト</button>
+            <div className={styles.contentheader}>
+              <div>
+                <p>投稿メッセージ</p>
+              </div>
+              <div>
+                <button onClick={() => signOut()}>サインアウト</button>
+              </div>
             </div>
 
             <div className={styles.contentmessages}>
-              <p>投稿メッセージ</p>
               {messages.map((item: any) => {
                 return (
                   <div className={styles.contentmessageitem} key={item.id}>
