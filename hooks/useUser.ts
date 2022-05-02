@@ -50,6 +50,10 @@ export default function User() {
     .insert([{message:msg,user_id:supabase.auth.user()?.id,is_public:true}]);
   }
 
+  function t(){
+    supabase.auth.api.setAuthCookie
+  }
+
   return {
     session,
     messages,
