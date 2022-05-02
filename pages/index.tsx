@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     postMessage,
   } = User();
   const [text, setText] = useState("");
-  const [newMessage, setMessage] = useState({ value: "" });
+  const [newMessage, setMessage] = useState({target:{value:''}});
 
   const handleChange = (e: any) => {
     setText(() => e.target.value);
@@ -56,7 +56,7 @@ const Home: NextPage = () => {
                 style={{ width: "100%" }}
                 cols={80}
                 rows={3}
-                value={newMessage.value}
+                value={newMessage.target.value}
                 onChange={(e) => setMessage(e)}
               ></textarea>
             </div>
